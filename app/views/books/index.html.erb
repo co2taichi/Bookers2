@@ -1,2 +1,17 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+
+<div class="books_area">
+  <h2>Books</h2>
+  <table>
+    <tr class = 'title'>
+      <th><p>Title</p></th>
+      <th><p>Opinion</p></th>
+    </tr>
+    <% @books.each do |books| %>
+      <tr>
+        <th><span><%= books.title %></span></th>
+        <th><span><%= books.body %></span></th>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
