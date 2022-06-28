@@ -10,6 +10,7 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    render layout: 'CreateForm'
   end
 
   def create

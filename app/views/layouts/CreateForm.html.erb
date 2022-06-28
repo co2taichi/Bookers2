@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <div class='booker-head'>
+      <span class="bookers">Bookers</span>
+      <li>
+        <%= link_to "Home", top_path %>
+      </li>
+      <% if user_signed_in? %>
+        <li>
+          <%= link_to "Users", url: "users/#{current_user.id}" %>
+        </li>
+        <li>
+          <%= link_to "Books", "/books" %>
+        </li>
+        <li>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "About", about_path %>
+        </li>
+        <li>
+          <%= link_to "Sign up", new_user_registration_path %>
+        </li>
+        <li>
+          <%= link_to "Log in", new_user_session_paths %>
+        </li>
+      <% end %>
+    </div>
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <h2>User Info</h2>
+        <table lass="UserInfo">
+          <tr class="user_image">
+            <th>
+            </th>
+            <th></th>
+          </tr>
+          <tr>
+            <th><p>name</p></th>
+            <% if user_signed_in? %>
+              <th><p><%= current_user.name %></p></th>
+            <% else %>
+              <th></th>
+            <% end %>
+          </tr>
+          <tr>
+            <th><p>introduction</p></th>
+            <% if user_signed_in? %>
+              <th><p><%= current_user.introduction %></p></th>
+            <% end %>
+          </tr>
+        </table>
+        <%= link_to "Log in", new_user_session_path %>
+          <div class="create_form">
+            <h2>New book</h2>
+            <%= form_with model: Book.new, url: "/books" do |f| %>
+              <p>Title</p>
+              <%= f.text_field :title %>
+              <p>Opinion</p>
+              <%= f.text_area :body %>
+              <div><%= f.submit 'Create Book'%></div>
+            <% end %>
+          </div>
+      </div>
+      <div class='one-content'>
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+  <footer>
+    <p>CopyRight Infratop.inc</p>
+  </footer>
+</html>

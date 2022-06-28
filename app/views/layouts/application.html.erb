@@ -16,7 +16,7 @@
       </li>
       <% if user_signed_in? %>
         <li>
-          <%= link_to "Users", top_path %>
+          <%= link_to "Users", user_path(current_user.id) %>
         </li>
         <li>
           <%= link_to "Books", "/books" %>
@@ -36,41 +36,12 @@
         </li>
       <% end %>
     </div>
-
   </head>
 
   <body>
-    <h2>User Info</h2>
-    <table lass="UserInfo">
-      <tr class="user_image">
-        <th>
-        </th>
-        <th></th>
-      </tr>
-      <tr>
-        <th><p>name</p></th>
-        <th><p><%= current_user.name %></p></th>
-      </tr>
-      <tr>
-        <th><p>introduction</p></th>
-        <th><p><%= current_user.introduction %></p></th>
-      </tr>
-    </table>
-    <div class="container">
-      <div class="create_form">
-        <h2>New book</h2>
-        <%= form_with model: Book.new, url: "/books" do |f| %>
-          <p>Title</p>
-          <%= f.text_field :title %>
-          <p>Opinion</p>
-          <%= f.text_area :body %>
-          <div><%= f.submit 'Create Book'%></div>
-        <% end %>
-      </div>
-      <div class='one-content'>
-        <%= yield %>
-      </div>
-
-    </div>
+    <%= yield %>
   </body>
+  <footer>
+    <p>CopyRight Infratop.inc</p>
+  </footer>
 </html>
