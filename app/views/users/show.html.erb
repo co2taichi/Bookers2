@@ -1,0 +1,59 @@
+<div class = 'container'>
+
+  <div>
+    <h2>User Info</h2>
+    <table lass="UserInfo">
+      <tr class="user_image">
+        <th>
+          <% if @book.user.image.attached? %>
+            <%= image_tag @book.user.image, size: "100x100" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "100x100" %>
+          <% end %>
+        </th>
+        <th></th>
+      </tr>
+      <tr>
+        <th><p>name</p></th>
+        <th><p><%= @book.user.name %></p></th>
+      </tr>
+      <tr>
+        <th><p>introduction</p></th>
+        <% if user_signed_in? %>
+          <th><p><%= @book.user.introduction %></p></th>
+        <% else%>
+          <th></th>
+        <% end %>
+      </tr>
+    </table>
+    <%= link_to "userinfo", edit_user_path(current_user) %>
+      <div class="create_form">
+        <h2>New book</h2>
+        <%= form_with model: Book.new, url: "/books" do |f| %>
+          <p>Title</p>
+          <%= f.text_field :title %>
+          <p>Opinion</p>
+          <%= f.text_area :body %>
+          <div><%= f.submit 'Create Book'%></div>
+        <% end %>
+      </div>
+  </div>
+  <div class="user_books_area">
+    <h2>Books</h2>
+    <table>
+      <tr class = 'user_book'>
+        <th><p>Title</p></th>
+        <th><p>Opinion</p></th>
+      </tr>
+      <% @books.each do |books| %>
+        <% if books.user.name == @book.user.name %>
+          <tr>
+            <th><span><%= books.title %></span></th>
+            <th><span><%= books.body %></span></th>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
+
+</div>
