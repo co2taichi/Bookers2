@@ -48,7 +48,14 @@
       <% @books.each do |books| %>
         <% if books.user.name == @book.user.name %>
           <tr>
-            <th><span><%= books.title %></span></th>
+            <td>
+              <% if books.user.image.attached? %>
+                <%= image_tag books.user.image, size: "100x100" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "100x100" %>
+              <% end %>
+            </td>
+            <th><span><%= link_to "#{books.title}", book_path(books.id) %></span></th>
             <th><span><%= books.body %></span></th>
           </tr>
         <% end %>

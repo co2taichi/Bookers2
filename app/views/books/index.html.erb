@@ -10,12 +10,12 @@
       <tr>
         <th>
           <% if books.user.image.attached? %>
-            <%= image_tag books.image, size: "100x100" %>
+            <%= image_tag books.user.image, size: "100x100" %>
           <% else %>
             <%= image_tag 'no_image', size: "100x100" %>
           <% end %>
         </th>
-        <th><span><%= link_to "#{books.title}", "books/1" %></span></th>
+        <th><span><%= link_to "#{books.title}", book_path(books.id) %></span></th>
         <th><span><%= books.body %></span></th>
       </tr>
     <% end %>
