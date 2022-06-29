@@ -5,8 +5,8 @@
     <table lass="UserInfo">
       <tr class="user_image">
         <th>
-          <% if @book.user.image.attached? %>
-            <%= image_tag @book.user.image, size: "100x100" %>
+          <% if @user.image.attached? %>
+            <%= image_tag @user.image, size: "100x100" %>
           <% else %>
             <%= image_tag 'no_image', size: "100x100" %>
           <% end %>
@@ -15,15 +15,11 @@
       </tr>
       <tr>
         <th><p>name</p></th>
-        <th><p><%= @book.user.name %></p></th>
+          <th><p><%= @user.name %></p></th>
       </tr>
       <tr>
         <th><p>introduction</p></th>
-        <% if user_signed_in? %>
-          <th><p><%= @book.user.introduction %></p></th>
-        <% else%>
-          <th></th>
-        <% end %>
+          <th><p><%= @user.introduction %></p></th>
       </tr>
     </table>
     <%= link_to "userinfo", edit_user_path(current_user) %>
@@ -46,7 +42,6 @@
         <th><p>Opinion</p></th>
       </tr>
       <% @books.each do |books| %>
-        <% if books.user.name == @book.user.name %>
           <tr>
             <td>
               <% if books.user.image.attached? %>
@@ -58,7 +53,6 @@
             <th><span><%= link_to "#{books.title}", book_path(books.id) %></span></th>
             <th><span><%= books.body %></span></th>
           </tr>
-        <% end %>
       <% end %>
     </table>
   </div>

@@ -12,7 +12,11 @@
     <div class='booker-head'>
       <span class="bookers">Bookers</span>
       <li>
-        <%= link_to "Home", top_path %>
+        <% if user_signed_in? %>
+          <%= link_to "Home", user_path(current_user.id) %>
+        <% else %>
+          <%= link_to "Home", top_path %>
+        <% end %>
       </li>
       <% if user_signed_in? %>
         <li>
