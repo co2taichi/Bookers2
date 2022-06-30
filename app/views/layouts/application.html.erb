@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookers2</title>
+    <title>Bookers2Ver2</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,7 +10,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <div class='booker-head'>
-      <span class="bookers">Bookers</span>
+      <%= link_to "Bookers", top_path %>
       <li>
         <% if user_signed_in? %>
           <%= link_to "Home", user_path(current_user.id) %>

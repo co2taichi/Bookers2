@@ -1,0 +1,42 @@
+<div>
+  <h2>User Info</h2>
+  <table lass="UserInfo">
+    <tr class="user_image">
+      <th>
+        <% if who_user.profile_image.attached? %>
+          <%= image_tag who_user.profile_image, size: "100x100" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "100x100" %>
+        <% end %>
+      </th>
+      <th></th>
+    </tr>
+    <tr>
+      <th><p>name</p></th>
+      <% if user_signed_in? %>
+        <th><p><%= who_user.name %></p></th>
+      <% else %>
+        <th></th>
+      <% end %>
+    </tr>
+    <tr>
+      <th><p>introduction</p></th>
+      <% if user_signed_in? %>
+        <th><p><%= who_user.introduction %></p></th>
+      <% else%>
+        <th></th>
+      <% end %>
+    </tr>
+  </table>
+  <%= link_to "userinfo", edit_user_path(current_user) %>
+    <div class="create_form">
+      <h2>New book</h2>
+      <%= form_with model: Book.new, url: "/books" do |f| %>
+        <p>Title</p>
+        <%= f.text_field :title %>
+        <p>Opinion</p>
+        <%= f.text_area :body %>
+        <div><%= f.submit 'Create Book'%></div>
+      <% end %>
+    </div>
+</div>

@@ -1,24 +1,24 @@
+<%= render 'layouts/errorMessage', error_value: @book%>
 
-<div class="books_area">
-  <h2>Books</h2>
-  <table>
-    <tr class = 'title'>
-      <th><p>Title</p></th>
-      <th><p>Opinion</p></th>
-    </tr>
-    <% @books.each do |books| %>
-      <tr>
-        <th>
-          <% if books.user.image.attached? %>
-            <%= image_tag books.user.image, size: "100x100" %>
-          <% else %>
-            <%= image_tag 'no_image', size: "100x100" %>
-          <% end %>
-        </th>
-        <th><span><%= link_to "#{books.title}", book_path(books.id) %></span></th>
-        <th><span><%= books.body %></span></th>
+<div class = 'container'>
+  <%= render 'layouts/createform', who_user: current_user %>
+  <div class="books_area">
+    <h2>Books</h2>
+    <table>
+      <tr class = 'title'>
+        <th><p>Title</p></th>
+        <th><p>Opinion</p></th>
       </tr>
-    <% end %>
-  </table>
+      <% @books.each do |books| %>
+        <tr>
+          <th>
+            <%= render 'layouts/userimage', who_user: books.user %>
+          </th>
+          <th><span><%= link_to "#{books.title}", book_path(books.id) %></span></th>
+          <th><span><%= books.body %></span></th>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
 

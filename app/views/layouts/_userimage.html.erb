@@ -1,0 +1,5 @@
+<% if who_user.profile_image.attached? %>
+  <%= image_tag who_user.profile_image, size: "100x100" %>
+<% else %>
+  <%= image_tag 'no_image', size: "100x100" %>
+<% end %>

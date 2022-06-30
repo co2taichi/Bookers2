@@ -1,39 +1,6 @@
+<%= render 'layouts/successmessage' %>
 <div class = 'container'>
-
-  <div>
-    <h2>User Info</h2>
-    <table lass="UserInfo">
-      <tr class="user_image">
-        <th>
-          <% if @user.image.attached? %>
-            <%= image_tag @user.image, size: "100x100" %>
-          <% else %>
-            <%= image_tag 'no_image', size: "100x100" %>
-          <% end %>
-        </th>
-        <th></th>
-      </tr>
-      <tr>
-        <th><p>name</p></th>
-          <th><p><%= @user.name %></p></th>
-      </tr>
-      <tr>
-        <th><p>introduction</p></th>
-          <th><p><%= @user.introduction %></p></th>
-      </tr>
-    </table>
-    <%= link_to "userinfo", edit_user_path(current_user) %>
-      <div class="create_form">
-        <h2>New book</h2>
-        <%= form_with model: Book.new, url: "/books" do |f| %>
-          <p>Title</p>
-          <%= f.text_field :title %>
-          <p>Opinion</p>
-          <%= f.text_area :body %>
-          <div><%= f.submit 'Create Book'%></div>
-        <% end %>
-      </div>
-  </div>
+ <%= render 'layouts/createform', who_user: @user %>
   <div class="user_books_area">
     <h2>Books</h2>
     <table>
@@ -44,11 +11,7 @@
       <% @books.each do |books| %>
           <tr>
             <td>
-              <% if books.user.image.attached? %>
-                <%= image_tag books.user.image, size: "100x100" %>
-              <% else %>
-                <%= image_tag 'no_image', size: "100x100" %>
-              <% end %>
+              <%= render 'layouts/userimage', who_user: books.user %>
             </td>
             <th><span><%= link_to "#{books.title}", book_path(books.id) %></span></th>
             <th><span><%= books.body %></span></th>

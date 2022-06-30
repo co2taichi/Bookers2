@@ -1,20 +1,19 @@
-<div>
-  <% @users.each do |users| %>
-    <table>
-      <tr>
-        <th>
-          <span>
-            <% if users.image.attached? %>
-              <%= image_tag users.image, size: "100x100" %>
-            <% else %>
-              <%= image_tag 'no_image', size: "100x100" %>
-            <% end %>
-          </span>
-        </th>
-        <th><span><%= users.name %></span></th>
-        <th><%= link_to "Show", user_path(users.id) %></th>
-      </tr>
-    </table>
-  <% end %>
+<div class="container">
+  <%= render 'layouts/createform', who_user: current_user %>
+  <div>
+    <% @users.each do |users| %>
+      <table>
+        <tr>
+          <th>
+            <span>
+              <%= render 'layouts/userimage', who_user: users %>
+            </span>
+          </th>
+          <th><span><%= users.name %></span></th>
+          <th><%= link_to "Show", user_path(users.id) %></th>
+        </tr>
+      </table>
+    <% end %>
+  </div>
 </div>
 
