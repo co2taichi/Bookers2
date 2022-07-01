@@ -1,5 +1,6 @@
-<h1>welcome to Bookers !!</h1>
-<p>In Bookers,</p>
+<%= render 'layouts/successmessage' %>
+<h1>welcome to <i class="fas fa-book"></i>Bookers !!</h1>
+<p>In <i class="fas fa-book"></i>Bookers,</p>
 <p>you can share and exchange your opinions, inpressions, and emotions<br>
 about various books!</p>
 
@@ -7,5 +8,5 @@ about various books!</p>
   <%= link_to 'Log in', new_user_session_path %>
 </div>
 <div class="SignUpBtn">
-  <%= link_to 'sign up', new_user_registration_path %>
+  <%= link_to 'Sign up', new_user_registration_path %>
 </div>

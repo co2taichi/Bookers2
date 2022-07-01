@@ -12,7 +12,9 @@
       <% @books.each do |books| %>
         <tr>
           <th>
-            <%= render 'layouts/userimage', who_user: books.user %>
+            <%= link_to user_path(books.user) do %>
+              <%= render 'layouts/userimage', who_user: books.user %>
+            <% end %>
           </th>
           <th><span><%= link_to "#{books.title}", book_path(books.id) %></span></th>
           <th><span><%= books.body %></span></th>

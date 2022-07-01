@@ -9,6 +9,7 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
+    redirect_to "/books" unless current_user.id == @book.user_id
   end
   def index
     @books = Book.all
