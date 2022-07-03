@@ -1,24 +1,22 @@
 <%= render 'layouts/successmessage' %>
-<div class = 'container'>
- <%= render 'layouts/createform', who_user: @user %>
-  <div class="user_books_area">
-    <h2>Books</h2>
-    <table>
-      <tr class = 'user_book'>
-        <th><p>Title</p></th>
-        <th><p>Opinion</p></th>
-      </tr>
-      <% @books.each do |books| %>
-          <tr>
-            <td>
-              <%= link_to user_path(books.user.id) do %>
-                <%= render 'layouts/userimage', who_user: books.user %>
-              <% end %>
-            </td>
-            <th><span><%= link_to "#{books.title}", book_path(books.id) %></span></th>
-            <th><span><%= books.body %></span></th>
-          </tr>
-      <% end %>
-    </table>
-  </div>
+<%= render 'layouts/createform', who_user: @user %>
+<div class="col-md-8 offset-md-1">
+  <h2>Books</h2>
+  <table>
+    <tr class = 'user_book'>
+      <th><p>Title</p></th>
+      <th><p>Opinion</p></th>
+    </tr>
+    <% @books.each do |books| %>
+        <tr>
+          <td>
+            <%= link_to user_path(books.user.id) do %>
+              <%= render 'layouts/userimage', who_user: books.user %>
+            <% end %>
+          </td>
+          <th><span><%= link_to "#{books.title}", book_path(books.id) %></span></th>
+          <th><span><%= books.body %></span></th>
+        </tr>
+    <% end %>
+  </table>
 </div>

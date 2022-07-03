@@ -1,4 +1,4 @@
-<div>
+<div class="col-md-3">
   <h2>User Info</h2>
   <table lass="UserInfo">
     <tr class="user_image">
@@ -20,7 +20,7 @@
       <th><p><%= who_user.introduction %></p></th>
     </tr>
   </table>
-  <%= link_to edit_user_path(who_user.id) do %>
+  <%= link_to edit_user_path(who_user.id), class: "btn btn-outline-secondary btn-block" do %>
     <i class="fas fa-user-cog"></i>
   <% end %>
   <div class="create_form">
@@ -30,7 +30,7 @@
       <%= f.text_field :title %>
       <p>Opinion</p>
       <%= f.text_area :body %>
-      <div><%= f.submit 'Create Book'%></div>
+      <div><%= f.submit 'Create Book' ,class: "btn btn-success"%></div>
     <% end %>
   </div>
 </div>
