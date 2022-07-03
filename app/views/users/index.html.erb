@@ -1,19 +1,29 @@
 <div class="container">
-  <%= render 'layouts/createform', who_user: current_user %>
-  <div>
-    <% @users.each do |users| %>
-      <table>
-        <tr>
-          <th>
-            <span>
-              <%= render 'layouts/userimage', who_user: users %>
-            </span>
-          </th>
-          <th><span><%= users.name %></span></th>
-          <th><%= link_to "Show", user_path(users.id) %></th>
-        </tr>
+  <div class="row">
+    <%= render 'layouts/createform', who_user: current_user %>
+    <div class="col-md-8 offset-md-1">
+      <h2>Users</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>images</th>
+            <th>name</th>
+            <th></th>
+          </tr>
+        </thead>
+        <% @users.each do |users| %>
+          <tr>
+            <td>
+              <span>
+                <%= render 'layouts/userimage', who_user: users, image_size: "80x80" %>
+              </span>
+            </td>
+            <td><span><%= users.name %></span></td>
+            <td><%= link_to "Show", user_path(users.id) %></td>
+          </tr>
+        <% end %>
       </table>
-    <% end %>
+    </div>
   </div>
 </div>
 

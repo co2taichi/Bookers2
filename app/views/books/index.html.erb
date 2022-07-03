@@ -1,26 +1,29 @@
 <%= render 'layouts/errorMessage', error_value: @book%>
 
 <div class = 'container'>
-  <%= render 'layouts/createform', who_user: current_user %>
-  <div class="books_area">
-    <h2>Books</h2>
-    <table>
-      <tr class = 'title'>
-        <th><p>Title</p></th>
-        <th><p>Opinion</p></th>
-      </tr>
-      <% @books.each do |books| %>
-        <tr>
-          <th>
-            <%= link_to user_path(books.user) do %>
-              <%= render 'layouts/userimage', who_user: books.user %>
-            <% end %>
-          </th>
-          <th><span><%= link_to "#{books.title}", book_path(books.id) %></span></th>
-          <th><span><%= books.body %></span></th>
-        </tr>
-      <% end %>
-    </table>
+  <div class="row">
+    <%= render 'layouts/createform', who_user: current_user %>
+    <div class="col-md-8 offset-md-1">
+      <h2>Books</h2>
+      <table class="table table-hover">
+        <thead>
+          <th></th>
+          <th>Title</th>
+          <th>Opinion</th>
+        </thead>
+        <% @books.each do |books| %>
+          <tr>
+            <td>
+              <%= link_to user_path(books.user) do %>
+                <%= render 'layouts/userimage', who_user: books.user, image_size: "80x80" %>
+              <% end %>
+            </td>
+            <td><span><%= link_to "#{books.title}", book_path(books.id) %></span></td>
+            <td><span><%= books.body %></span></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
 </div>
 

@@ -1,21 +1,34 @@
 <%= render 'layouts/successmessage' %>
 <div class="container">
- <%= render 'layouts/createform', who_user: @book.user %>
- <h2>Book detail</h1>
-  <table>
-    <tr>
-      <td>
-        <%= link_to user_path(@book.user.id) do %>
-          <%= render 'layouts/userimage', who_user: @book.user %>
-          <%= @book.user.name %>
-        <% end %>
-      </td>
-      <td><%= link_to "#{@book.title}", book_path(@book.id) %></td>
-      <td><%= @book.body %></td>
-      <% if @book.user.id== current_user.id %>
-        <td><%= link_to 'Edit', edit_book_path(@book.id) %></td>
-        <td><%= link_to "Destroy", delete_book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
-      <% end %>
-    </tr>
-  </table>
+  <div class="row">
+    <%= render 'layouts/createform', who_user: @book.user %>
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h1>
+      <table class="table table-hover table-inverth">
+        <thead>
+          <tr>
+            <td>
+              <%= link_to user_path(@book.user.id) do %>
+                <%= render 'layouts/userimage', who_user: @book.user, image_size: "100x100" %>
+                <div>
+                  <%= @book.user.name %>
+                </div>
+              <% end %>
+            </td>
+            <td><%= link_to "#{@book.title}", book_path(@book.id) %></td>
+            <td><%= @book.body %></td>
+            <% if @book.user.id== current_user.id %>
+              <td>
+                <%= link_to edit_book_path(@book.id), class: "btn btn-success btn-sm" do %>
+                  Edit
+                <% end %>
+              </td>
+              <td>
+                <%= link_to "Destroy", delete_book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+              </td>
+            <% end %>
+          </tr>
+      </table>
+    </div>
+  </div>
 </div>
