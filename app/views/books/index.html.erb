@@ -10,16 +10,22 @@
           <th></th>
           <th>Title</th>
           <th>Opinion</th>
+          <th></th>
+          <th></th>
         </thead>
         <% @books.each do |books| %>
           <tr>
             <td>
               <%= link_to user_path(books.user) do %>
-                <%= render 'layouts/userimage', who_user: books.user, image_size: "80x80" %>
+                <%= render 'layouts/userimage', who_user: books.user, image_size: "50x50" %>
               <% end %>
             </td>
             <td><span><%= link_to "#{books.title}", book_path(books.id) %></span></td>
             <td><span><%= books.body %></span></td>
+            <td>
+              <%= render 'layouts/createfavorited', book: books %>
+            </td>
+            <td></td>
           </tr>
         <% end %>
       </table>

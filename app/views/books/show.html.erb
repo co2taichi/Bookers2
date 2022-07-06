@@ -9,7 +9,7 @@
           <tr>
             <td>
               <%= link_to user_path(@book.user.id) do %>
-                <%= render 'layouts/userimage', who_user: @book.user, image_size: "100x100" %>
+                <%= render 'layouts/userimage', who_user: @book.user, image_size: "50x50" %>
                 <div>
                   <%= @book.user.name %>
                 </div>
@@ -25,6 +25,10 @@
                 <%= link_to "Destroy", book_path(@book.id), method: :delete,"data-confirm" => "本当に削除しますか？" ,class: "btn btn-sm btn-danger" %>
               </td>
             <% end %>
+            <td>
+             <%= render 'layouts/createfavorited', book: @book %>
+            </td>
+            <td></td>
           </tr>
       </table>
     </div>
