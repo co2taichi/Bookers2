@@ -25,7 +25,14 @@
             <td>
               <%= render 'layouts/createfavorited', book: books %>
             </td>
-            <td></td>
+            <td>
+              <div>
+                <p>コメント件数：<%= books.book_comments.count %></p>
+              </div>
+              <div>
+
+              </div>
+            </td>
           </tr>
         <% end %>
       </table>

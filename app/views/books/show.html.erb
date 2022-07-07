@@ -28,9 +28,53 @@
             <td>
              <%= render 'layouts/createfavorited', book: @book %>
             </td>
-            <td></td>
+            <td>
+            </td>
           </tr>
       </table>
+      <div class="createforms">
+        <%= form_with model: [Book.new, @book_comment], url: "#{@book.id}/book_comments" do |f| %>
+        <div class = "form-group">
+            <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "col-md-12" %>
+        </div>
+          <%= f.submit "Send" %>
+        <% end %>
+      </div>
+      <div>
+        <h2>Comments</h2>
+        <table class="table table-hover">
+          <thead>
+            <th>UserName</th>
+            <th>Comment</th>
+            <th></th>
+          </thead>
+          <tbody>
+            <% @book_comments.each do |comments| %>
+              <% if comments.book.id == @book.id %>
+                <tr>
+                  <td>
+                    <%= link_to user_path(comments.user) do %>
+                      <%= render 'layouts/userimage', who_user: comments.user, image_size: "50x50" %>
+                      <%= comments.user.name %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= comments.comment %>
+                  </td>
+                  <% if comments.user.id== current_user.id %>
+                    <td>
+                      <%= link_to "Destroy", book_book_comments_path(comments), method: :delete,"data-confirm" => "コメントを削除しますか？" ,class: "btn btn-sm btn-danger" %>
+                    </td>
+                  <% else %>
+                    <td></td>
+                  <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
