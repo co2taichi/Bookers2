@@ -10,17 +10,23 @@
           <th></th>
           <th>Title</th>
           <th>Opinion</th>
+          <th></th>
         <thead>
         <tbody>
           <% @books.each do |books| %>
               <tr>
-                <td>
+                <td width = '10%'>
                   <%= link_to user_path(books.user.id) do %>
                     <%= render 'layouts/userimage', who_user: books.user, image_size: "76x80" %>
                   <% end %>
                 </td>
-                <td><span><%= link_to "#{books.title}", book_path(books.id) %></span></td>
-                <td><span><%= books.body %></span></td>
+                <td width = '20%'><span><%= link_to "#{books.title}", book_path(books.id) %></span></td>
+                <td width = '35%'><span><%= books.body %></span></td>
+                <td width = '25%'>
+                  <div>
+                    <p>コメント件数：<%= books.book_comments.count %></p>
+                  </div>
+                </td>
               </tr>
           <% end %>
         <tbody>

@@ -1,7 +1,6 @@
 class BookCommentsController < ApplicationController
   before_action :authenticate_user!
-  skip_before_action :verify_authenticity_token
-
+  skip_before_action :verify_authenticity_token   # トークンを無視 解決策として正しいかわからない
 
   def create
     userID = current_user.id

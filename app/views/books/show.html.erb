@@ -46,7 +46,7 @@
           <thead>
             <th>UserName</th>
             <th>Comment</th>
-            <th></th>
+            <th>コメント件数：<%= @book.book_comments.count %></th>
           </thead>
           <tbody>
             <% @book_comments.each do |comments| %>
