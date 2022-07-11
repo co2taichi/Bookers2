@@ -1,20 +1,21 @@
 class BookCommentsController < ApplicationController
   before_action :authenticate_user!
-  skip_before_action :verify_authenticity_token   # トークンを無視 解決策として正しいかわからない
+  skip_before_action :verify_authenticity_token #HACK:
 
   def create
-    userID = current_user.id
     book = Book.find(params[:book_id])
-    # comment = current_user.book_comments.new(book_comment_params)
-    comment = BookComment.new(book_comment_params)
-    comment.user_id = userID
+    comment = current_user.book_comments.new(book_comment_params)
     comment.book_id = book.id
     comment.save
     redirect_to request.referer
   end
 
   def destroy
-    BookComment.find(params[:book_id]).destroy
+    @book = Book.find(params[:book_id])
+    book_comment = @book.book_comments.find(params[:id])
+    if book_comment.user == current_user
+      book_comment.destroy
+    end
     redirect_to request.referer
   end
 

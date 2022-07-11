@@ -27,6 +27,9 @@
                     <p>コメント件数：<%= books.book_comments.count %></p>
                   </div>
                 </td>
+                <td>
+                  <%= render 'layouts/createfavorited', book: books %>
+                </td>
               </tr>
           <% end %>
         <tbody>

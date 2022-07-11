@@ -45,7 +45,7 @@
               </li>
               <li>
                 <%= link_to destroy_user_session_path, method: :delete, class: "text-light p-xl-2 text-decoration-none" do %>
-                  <i class="fas fa-sign-out-alt"></i> Log out
+                  <i class="fas fa-sign-out-alt"></i> logout
                 <% end %>
               </li>
             <% else %>
@@ -61,7 +61,7 @@
               </li>
               <li>
                 <%= link_to new_user_session_path, class: "text-light p-xl-2 text-decoration-none" do %>
-                  <i class="fas fa-sign-in-alt"></i> Log in
+                  <i class="fas fa-sign-in-alt"></i> login
                 <% end %>
               </li>
             <% end %>
