@@ -11,6 +11,7 @@
           <th>Title</th>
           <th>Opinion</th>
           <th></th>
+          <th></th>
         <thead>
         <tbody>
           <% @books.each do |books| %>
@@ -21,13 +22,13 @@
                   <% end %>
                 </td>
                 <td width = '20%'><span><%= link_to "#{books.title}", book_path(books.id) %></span></td>
-                <td width = '35%'><span><%= books.body %></span></td>
+                <td width = '37%'><span><%= books.body %></span></td>
                 <td width = '25%'>
                   <div>
                     <p>コメント件数：<%= books.book_comments.count %></p>
                   </div>
                 </td>
-                <td>
+                <td width = '8%'>
                   <%= render 'layouts/createfavorited', book: books %>
                 </td>
               </tr>
